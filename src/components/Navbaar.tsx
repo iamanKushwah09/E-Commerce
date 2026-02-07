@@ -5,8 +5,8 @@ const Navbaar = () => {
   const [open, setOpen] = useState(false)
 
   return (
-    <nav className="w-full bg-white shadow-md">
-      <div className="flex justify-between items-center px-6 py-4 relative">
+    <nav className="w-full bg-white shadow-md m-9">
+      <div className="flex justify-between items-center px-6 py-4 relative overflow-hidden">
 
         {/* Logo */}
         <div className="flex items-center">
