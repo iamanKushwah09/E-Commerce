@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Product } from "../types/product";
+import  type { Product } from "../types/product";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const [activeImage, setActiveImage] = useState(0);

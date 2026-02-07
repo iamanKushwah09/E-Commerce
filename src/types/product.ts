@@ -1,14 +1,12 @@
-// ye batata hai "product me kya-kya hoga"
-
 export type Product = {
   id: number;
   title: string;
   category: string;
 
-  images: string[];     // multiple images
+  images: string[];
 
   price: number;
-  oldPrice?: number;    // ? = optional
+  oldPrice?: number;
 
   rating: number;
   reviews: number;
