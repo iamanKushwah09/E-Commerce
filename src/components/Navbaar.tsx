@@ -1,18 +1,61 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import logo from '../assets/logo.png'
 
 const Navbaar = () => {
+  const [open, setOpen] = useState(false)
+
   return (
-    <nav className='w-full bg-white shadow-md dark:*:'>
-      <div className='flex justify-between items-center px-6 py-4'>
-        <div className='text-2xl font-bold text-gray-800'>E-Commerce</div>
-        <ul className='flex gap-8'>
-          <li className='hover:text-blue-600 cursor-pointer transition'>Home</li>
-          <li className='hover:text-blue-600 cursor-pointer transition'>About</li>
-          <li className='hover:text-blue-600 cursor-pointer transition'>Products</li>
-          <li className='hover:text-blue-600 cursor-pointer transition'>☰</li>
-        
+    <nav className="w-full bg-white shadow-md">
+      <div className="flex justify-between items-center px-6 py-4 relative">
+
+        {/* Logo */}
+        <div className="flex items-center">
+        <img
+          src={logo}
+          alt="E-Commerce Logo"
+          className="h-14 w-auto object-contain"
+  />
+</div>
+
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-6 text-gray-700 font-medium">
+          <li className="cursor-pointer hover:text-black">New Arrivals</li>
+          <li className="cursor-pointer hover:text-black">Men</li>
+          <li className="cursor-pointer hover:text-black">Women</li>
+          <li className="cursor-pointer hover:text-black">Accessories</li>
+          <li className="cursor-pointer hover:text-black">Sales</li>
         </ul>
+
+        {/* Hamburger Icon */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-2xl cursor-pointer"
+        >
+          ☰
+        </button>
+
+        {/* Mobile Menu */}
+        {open && (
+          <ul className="absolute top-16 right-6 w-40 bg-gray-700 text-white rounded shadow-md md:hidden">
+            <li className="px-4 py-2 hover:bg-gray-600 cursor-pointer">
+              New Arrivals
+            </li>
+            <li className="px-4 py-2 hover:bg-gray-600 cursor-pointer">
+              Men
+            </li>
+            <li className="px-4 py-2 hover:bg-gray-600 cursor-pointer">
+              Women
+            </li>
+            <li className="px-4 py-2 hover:bg-gray-600 cursor-pointer">
+              Accessories
+            </li>
+            <li className="px-4 py-2 hover:bg-gray-600 cursor-pointer">
+              Sales
+            </li>
+          </ul>
+        )}
+
       </div>
     </nav>
   )
