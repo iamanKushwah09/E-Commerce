@@ -1,15 +1,14 @@
-import React from 'react'
-import Navbaar from './components/Navbaar'
-import Products from './components/Products'
-import Footer from './components/Footer'
+import Home from "./pages/Home";
+import Navbaar from "./components/Navbaar";
+import Footer from "./components/Footer";
 
-const App = () => {
+function App() {
   return (
     <div>
-      <Navbaar/>
-      <Products/>
+      <Navbaar />
+      <Home />
       <Footer/>
     </div>
-  )
+  );
 }
-export default App
+export default App;
