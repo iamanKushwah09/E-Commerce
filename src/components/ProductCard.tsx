@@ -1,11 +1,32 @@
 import { useState } from "react";
-import  type { Product } from "../types/product";
+import type { Product } from "../types/product";
+import { useShop } from "../context/ShopContext";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const [activeImage, setActiveImage] = useState(0);
+  const [isAdded, setIsAdded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const { addToCart, addToWishlist, isInWishlist } = useShop();
+  const inWishlist = isInWishlist(product.id);
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addToCart(product);
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 2000);
+  };
+
+  const handleAddToWishlist = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addToWishlist(product);
+  };
 
   return (
-    <div className="bg-white rounded-xl shadow hover:shadow-lg transition">
+    <div 
+      className="bg-white rounded-xl shadow hover:shadow-lg transition flex flex-col relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
 
       {/* IMAGE PART */}
       <div className="relative h-60 overflow-hidden rounded-t-xl group">
@@ -21,6 +42,14 @@ const ProductCard = ({ product }: { product: Product }) => {
             {product.badge}
           </span>
         )}
+        
+        {/* WISHLIST BUTTON - TOP RIGHT */}
+        <button
+          onClick={handleAddToWishlist}
+          className="absolute top-3 right-3 text-2xl transition hover:scale-110"
+        >
+          {inWishlist ? "❤️" : "🤍"}
+        </button>
 
         {/* IMAGE SWITCH */}
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
@@ -36,12 +65,12 @@ const ProductCard = ({ product }: { product: Product }) => {
       </div>
 
       {/* CONTENT */}
-      <div className="p-4 bg-white">
+      <div className="p-4 bg-white grow flex flex-col">
         <p className="text-xs text-gray-500 uppercase">
           {product.category}
         </p>
 
-        <h3 className="font-semibold text-sm mt-1">
+        <h3 className="font-semibold text-sm mt-1 line-clamp-2">
           {product.title}
         </h3>
 
@@ -75,6 +104,20 @@ const ProductCard = ({ product }: { product: Product }) => {
               />
             ))}
           </div>
+        )}
+
+        {/* ADD TO CART BUTTON - APPEARS ON HOVER */}
+        {isHovered && (
+          <button
+            onClick={handleAddToCart}
+            className={`w-full mt-4 py-2 rounded-lg font-semibold transition ${
+              isAdded
+                ? 'bg-green-500 text-white'
+                : 'bg-black text-white hover:bg-gray-800'
+            }`}
+          >
+            {isAdded ? '✓ Added to Cart' : 'Add to Cart'}
+          </button>
         )}
       </div>
     </div>
