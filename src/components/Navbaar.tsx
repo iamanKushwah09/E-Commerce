@@ -48,13 +48,15 @@ const Navbaar = () => {
             )}
             <button 
               onClick={() => setSearchOpen(!searchOpen)}
-              className="text-xl cursor-pointer hover:text-gray-700 transition"
             >
-              🔍
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+              </svg>
+
             </button>
           </div>
 
-          {/* Wishlist */}
+          {/* Wishlist
           <div className="relative cursor-pointer hover:text-gray-700 transition">
             <span className="text-xl">❤️</span>
             {wishlist.length > 0 && (
@@ -62,10 +64,10 @@ const Navbaar = () => {
                 {wishlist.length}
               </span>
             )}
-          </div>
+          </div> */}
 
           {/* Account */}
-          <button className="text-xl cursor-pointer hover:text-gray-700 transition">👤</button>
+          <button className="text-xl cursor-pointer hover:text-gray-700 transition"><img src="src/assets/defaultuser.png" alt="defaultuser"className="h-5 w-5" /></button>
 
           {/* Cart */}
           <div className="relative cursor-pointer hover:text-gray-700 transition">
