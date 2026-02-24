@@ -6,7 +6,7 @@ import logo from '../assets/logo.png'
 const Navbaar = () => {
   const [open, setOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
-  const { searchQuery, setSearchQuery, cart, wishlist } = useShop()
+  const { searchQuery, setSearchQuery, cart } = useShop()
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
